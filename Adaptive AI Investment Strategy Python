@@ -4,6 +4,7 @@ combines elements of finance and machine learning. However, here is a framework 
  as the core module starting point to create an adaptive AI algorithm 
 trading strategy model for investment management, implemented using Python:
 """
+
 # Import necessary python libraries
 import numpy as np
 import pandas as pd
@@ -11,6 +12,13 @@ from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import r2_score, mean_squared_error
 from sklearn.model_selection import train_test_split
+
+
+# Load and preprocess investment data
+data = pd.read_csv('investment_data.csv')
+data.dropna(inplace=True)
+X = data.drop(['returns'], axis=1)
+y = data['returns']
 
 # Split data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
